@@ -13,14 +13,14 @@ Allows selecting items using checkboxes
 
 Persists selections while switching tabs
 
-Supports case-insensitive search
+Supports case insensitive search
 
 Returns selected items on save
 
 No backend or external state management libraries are used.
 
 🧠 Approach & Design Decisions
-1. Component-Based Design
+1. Component Based Design
 
 The core logic is encapsulated inside a single reusable component: AddItemsModal
 
@@ -78,7 +78,7 @@ This separation improves readability and makes it easy to scale or replace the d
 
 4. Search & Filtering
 
-Search is case-insensitive
+Search is caseinsensitive
 
 Filtering applies only to the currently active category
 
@@ -104,7 +104,7 @@ src/
 │   └── items.js              # Fruits & vegetables data
 │
 ├── styles/
-│   └── AddItemsModal.css     # Component-specific styles
+│   └── AddItemsModal.css     # Component specific styles
 │
 ├── App.js                    # Root component
 ├── index.js                  # React entry point
