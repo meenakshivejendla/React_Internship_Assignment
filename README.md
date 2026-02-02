@@ -1,66 +1,52 @@
-React Model
+React Internship Assignment – Add Items Modal
 
-This is a reusable React modal component that allows users to select items from two categories :Fruits and Vegetables.
+This project implements a reusable React modal component that allows users to select items from two categories: Fruits and Vegetables.
+The main focus of this assignment is code structure, state management, and clean component design, rather than heavy UI styling.
 
+📌 Problem Overview
 
+The goal is to build a modal that:
 
-🎯 Objective
+Displays two categories (Fruits & Vegetables)
 
-The objective of this assignment is to build a modal component that:
+Allows selecting items using checkboxes
 
-1.Handles multiple categories independently
+Persists selections while switching tabs
 
-2.Maintains selection state across tab switches
+Supports case-insensitive search
 
-Demonstrates proper React component design and state ownership
+Returns selected items on save
 
-✨ Features
+No backend or external state management libraries are used.
 
-Two category tabs: Fruits and Vegetables
+🧠 Approach & Design Decisions
+1. Component-Based Design
 
-Live count of selected items per category
+The core logic is encapsulated inside a single reusable component: AddItemsModal
 
-Active tab highlighting
-Case insensitive real time search
-Save button logs selected items to the console
-Save button disabled when no items are selected
-Cancel button closes the modal without saving
-Scrollable list of items
-Checkbox based selection
-Selections persist while switching tabs
+The UI is logically divided into:
 
+Header (title, tabs, close icon)
 
-🗂️ Project Structure
-src/
-│
-├── components/
-│   └── AddItemsModal.js
-│
-├── data/
-│   └── items.js
-│
-├── styles/
-│   └── AddItemsModal.css
-│
-├── App.js
-├── index.js
-├── index.css
+Content (search + item list)
 
+Footer (Cancel and Save actions)
 
-This structure ensures:
+This makes the component easy to understand and reuse.
 
-Clear separation of concerns
-Maintainable and readable code along with Reusable components
+2. State Management
 
-🧠 State Management Approach
+React functional components with useState are used
 
-React functional components with useState
+All state is owned by the AddItemsModal component to maintain a single source of truth
 
-A single source of truth inside AddItemsModal
+State includes:
 
-Independent state handling for Fruits and Vegetables
+activeTab → tracks current category
 
-No redundant or duplicated state
+selected → stores selected item IDs separately for fruits and vegetables
+
+search → search input value
 
 Example state structure:
 
@@ -69,18 +55,75 @@ Example state structure:
   vegetables: []
 }
 
-📦 Data Structure
+
+This ensures:
+
+Independent handling of categories
+
+Selection persistence across tab switches
+
+No redundant or duplicated state
+
+3. Data Handling
+
+Static data is kept separate in items.js:
+
 ITEMS = {
   fruits: [{ id, label }],
   vegetables: [{ id, label }]
 }
 
 
-This structure allows easy scalability and clean rendering logic.
+This separation improves readability and makes it easy to scale or replace the data source later (e.g., API).
 
-🚀 How to Run the Project
+4. Search & Filtering
 
-Clone the repository
+Search is case-insensitive
+
+Filtering applies only to the currently active category
+
+The original data is never mutated
+
+5. UX Considerations
+
+Selected item count updates instantly on tabs
+
+Save button is disabled when no items are selected
+
+Item list is scrollable
+
+Selections persist while switching tabs
+
+📁 Project Structure
+src/
+│
+├── components/
+│   └── AddItemsModal.js      # Main modal component
+│
+├── data/
+│   └── items.js              # Fruits & vegetables data
+│
+├── styles/
+│   └── AddItemsModal.css     # Component-specific styles
+│
+├── App.js                    # Root component
+├── index.js                  # React entry point
+├── index.css                 # Global styles
+
+
+This structure ensures clear separation of concerns and maintainable code.
+
+▶️ How to Run the Project
+
+Clone the repository:
+
+git clone https://github.com/meenakshivejendla/React_Internship_Assignment.git
+
+
+Navigate into the project folder:
+
+cd React_Internship_Assignment
+
 
 Install dependencies:
 
@@ -92,19 +135,23 @@ Start the development server:
 npm start
 
 
-🧪 Save Action
+Open the browser at:
 
-Clicking the Save button logs selected items to the browser console:
+http://localhost:3000
+
+💾 Save Action Output
+
+Clicking the Save button logs the selected items to the browser console in the following format:
 
 {
-  fruits: [1, 3, 5],
+  fruits: [1, 3],
   vegetables: [101, 104]
 }
 
 
+(No backend is used, as per assignment constraints.)
 
-
-⚙️ Constraints Followed
+✅ Constraints Followed
 
 React functional components only
 
@@ -114,11 +161,7 @@ No backend
 
 Clean, readable, and modular code
 
-Save button disabled when no items are selected
-
-UI structured for easy future enhancements (debounced search, select all, etc.)
-
 👩‍💻 Author
 
 Meenakshi
-React Internship Assignment – BotGauge
+React Internship Assignment
